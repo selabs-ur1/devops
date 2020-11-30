@@ -1,0 +1,9 @@
+<div class="flexContainer" >
+    <div class="title">
+    Weather
+    </div>
+    <div  class="element" *ngFor="let iconCode of iconsCode" >
+        <img class="iconImg" [src]="'assets/weather/'+iconCode+'.png'" *ngIf="iconCode">
+    </div>
+    
+</div>

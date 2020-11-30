@@ -1,0 +1,22 @@
+.flexContainer{
+    display: flex
+}
+.title{
+    width: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.element{
+    flex-grow: 1;
+    flex-basis: 0;
+    max-height:80px
+}
+
+.iconImg{
+    max-width:100%;
+    max-height:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
