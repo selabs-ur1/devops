@@ -1,0 +1,43 @@
+##### Labeler ##########################################################################################################
+# Enable "labeler" for your PR that would add labels to PRs based on the paths that are modified in the PR.
+labelPRBasedOnFilePath:
+  # Add 'backend' to any changes within 'api' folder or any subfolders
+  backend:
+    - api/**/*
+
+  # Add 'frontend' to any file changes within 'front' folder or any subfolders
+  frontend:
+    - front/**/*
+
+# Various Flags to control behaviour of the "Labeler"
+labelerFlags:
+  # If this flag is changed to 'false', labels would only be added when the PR is first created and not when existing
+  # PR is updated.
+  # The default is 'true' which means the labels would be added when PR is updated even if they were removed by the user
+  labelOnPRUpdates: true
+
+##### Greetings ########################################################################################################
+# Comment to be posted to welcome users when they open their first PR
+firstPRWelcomeComment: >
+  Thanks for opening this pull request! Please check out our contributing guidelines.
+
+# Comment to be posted to congratulate user on their first merged PR
+firstPRMergeComment: >
+  Awesome work, congrats on your first merged pull request!
+
+# Comment to be posted to on first time issues
+firstIssueWelcomeComment: >
+  Thanks for opening your first issue here! Be sure to follow the issue template!
+
+
+###### PR/Branch Up-To-Date Checker ####################################################################################
+# Check if the branch is up to date with master when certain files are modified
+checkUpToDate:
+  # The default branch is "master", change the branch if you want to check against a different target branch
+  targetBranch: main
+  files:
+  # File paths that you want to check for
+  # In this example, it checks if the branch is up to date when alembic migrations are modified in the PR.
+  # It helps avoid multiple heads in alembic migrations in a collaborative development project.
+    - api/**/*
+    - front/**/*

@@ -1,0 +1,39 @@
+ matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "node"
+      install:
+        - npm install --prefix ./front
+      script:
+        - npm run-script build --prefix ./front
+
+    - language: java
+      sudo: required
+      services:
+        - docker
+      before_install:
+        - sudo apt-get update
+        - curl -fsSL https://get.docker.com | sh;
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - docker --version
+        - docker-compose --version
+      script:
+        - docker-compose -f ./api/docker-compose.yaml up --detach
+        - sleep 10
+        - ./api/mvnw compile quarkus:dev 2>./logs.txt 1>./logs_run.txt &
+        - sleep 15
+        - |
+          if [ ! -s "./logs.txt" ]; then
+            echo "ERR"
+            exit 1
+          fi
+        - docker-compose -f ./api/docker-compose.yaml down
+        - rm ./logs.txt
+
+notifications:
+  email:
+    - thibault.delaruelle@etudiant.univ-rennes1.fr
+    - titouan.belghazi@etudiant.univ-rennes1.fr
+    - besma.kaouane@etudiant.univ-rennes1.fr
+    - diane.sevin@etudiant.univ-rennes1.fr

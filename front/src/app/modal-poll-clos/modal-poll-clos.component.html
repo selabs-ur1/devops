@@ -1,0 +1,48 @@
+    <div class="modal-content">
+  <div class="modal-header text-center justify-content-center">
+    <h4 class="modal-title" id="modal-basic-title">Le sondage est maintenant clos</h4>
+  </div>
+  <div class="modal-body">
+
+    <div class="d-flex justify-content-center">
+      La date retenue pour le soundage est le:
+    </div>
+    <BR>
+    <div class="d-flex justify-content-center">
+      <b>{{poll?.selectedChoice?.startDate | date:'EEEE d LLLL': 'CEST':'fr'}}</b>
+    </div>
+    <div class="d-flex justify-content-center">
+      <b> de {{poll?.selectedChoice?.startDate | date:'H:mm'}}</b>
+    </div>
+    <div class="d-flex justify-content-center">
+     <b> - </b>
+    </div>
+
+      <div class="d-flex justify-content-center">
+        <b> {{poll?.selectedChoice?.endDate | date:'H:mm'}}</b>
+    </div>
+<BR>
+    Le lieu sera {{poll?.location}}
+    <BR>
+      <div *ngIf="poll?.padURL">
+        Un pad est ouvert <a [href]="poll?.padURL" target="_blank">ici</a>
+      </div>
+      <BR>
+        <div *ngIf="poll?.tlkURL">
+        Un salon de discussion est ouvert <a [href]="poll?.tlkURL" target="_blank">ici</a>
+      </div>
+    <BR>
+      <div *ngIf="poll?.has_meal">Un repas est prévu pour ce meeting.
+      </div>
+      <BR>
+        <div *ngIf="poll?.description">
+          L'ordre du jour est le suivant:
+          {{poll.description}}
+          </div>
+          <BR>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="dismissModalAndNavigate()">Retour</button>
+  </div>
+</div>

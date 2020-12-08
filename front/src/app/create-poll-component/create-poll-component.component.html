@@ -1,0 +1,111 @@
+<div class="Container">
+    <img src="assets/flat_logo.png" alt="Logo Simba" height="50px" [ngStyle]="{ 'marginBottom': '1rem' }"/>
+
+    <div class="card">
+        <p-toast></p-toast>
+        <p-steps [model]="items" [readonly]="false" [(activeIndex)]="step"></p-steps>
+    </div>
+    <div  [hidden]="step!=0" class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                Informations
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Entrez les informations sur le rendez-vous à planifier
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="titre">Titre de la réunion</label>
+                        <input #titre="ngModel" id="titre" type="text" required pInputText
+                            [(ngModel)]="poll.title"
+                            [ngClass]="{'p-invalid': (titre.invalid && submitted) || (titre.dirty && titre.invalid)}">
+                        <small *ngIf="(titre.invalid && submitted) || (titre.dirty && titre.invalid)"
+                            class="p-error">Le titre est requis.</small>
+                    </div>
+                    <div class="p-field">
+                        <label for="lieu">Lieu de la réunion</label>
+                        <input #lieu="ngModel" id="lieu" type="text" required pInputText
+                            [(ngModel)]="poll.location"
+                            [ngClass]="{'p-invalid': (lieu.invalid && submitted) || (lieu.dirty && lieu.invalid)}">
+                        <small class="p-error" *ngIf="(lieu.invalid && submitted )|| (lieu.dirty && lieu.invalid)">Le
+                            lieu est requis.</small>
+                    </div>
+                   <div class="p-field">
+                        <label for="desc">Description</label>
+                        <textarea #desc="ngModel" id="desc"  required pInputTextarea
+                            [(ngModel)]="poll.description"
+                            [ngClass]="{'p-invalid': (desc.invalid && submitted) || (desc.dirty && desc.invalid)}"></textarea>
+                        <small class="p-error" *ngIf="(desc.invalid && submitted) || (desc.dirty && desc.invalid)">La description est requise.</small>
+                    </div>
+                    <div class="p-field">
+                        <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 1rem;font-weight: normal;">Repas</p>
+                        <p-inputSwitch [ariaLabelledBy]="'repas'"  #repas="ngModel" id="repas" [(ngModel)]="poll.has_meal"></p-inputSwitch>
+                    </div>
+                    <div *ngIf="poll?.id" class="p-field">
+                      <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 1rem;font-weight: normal;">Sondage clos</p>
+                        <p-inputSwitch #clos="ngModel" id="clos" [(ngModel)]="poll.clos"></p-inputSwitch>
+                  </div>
+
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="p-grid p-nogutter p-justify-end">
+                    <p-button [disabled]=true label="Back"  icon="pi pi-angle-left"></p-button>
+
+                    <p-button class="float-right" label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    <div *ngIf="step==1"  class="stepsdemo-content">
+      <p-card>
+      <ng-template pTemplate="content">
+        <div class="p-fluid">
+
+        <div class="p-field">
+          <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 1rem;font-weight: normal;">Avez vous un agenda avec un flux ics accessible ?</p>
+          <p-inputSwitch [(ngModel)]="hasics"></p-inputSwitch>
+        </div>
+        <div *ngIf="hasics" class="p-field">
+          <label for="ics">URL ICS du participant</label>
+          <span class="p-input-icon-right">
+            <i *ngIf="loadics" class="pi pi-spin pi-spinner" ></i>
+            <input #mail="ngModel" id="ics" type="text"  pInputText (change)="getICS()" [(ngModel)]="ics">
+          </span>
+        </div>
+      </div>
+
+            <full-calendar #calendar [options]="options"></full-calendar>
+      </ng-template>
+            <ng-template pTemplate="footer">
+              <div>
+                  <p-button label="Back" (onClick)="prevPage1()" icon="pi pi-angle-left"></p-button>
+                  <p-button class="float-right" label="Next" (onClick)="nextPage1()" icon="pi pi-angle-right" iconPos="right"></p-button>
+              </div>
+
+
+          </ng-template>
+        </p-card>
+    </div>
+    <div *ngIf="step==2"  class="stepsdemo-content">
+      <p-card>
+      <ng-template pTemplate="content">
+          Le sondage est créé. <BR>
+          Le lien pour participer est <a [href]="urlsondage" target="_blank">{{urlsondage}} </a>. <BR>
+          Le lien d'administration est <a [href]="urlsondageadmin" target="_blank">{{urlsondageadmin}}</a>.<BR>
+          Un salon a été créé de discussion pour cette réunion est accessible à cette adresse <a [href]="urlsalon" target="_blank">{{urlsalon}}</a>.<BR>
+          <span *ngIf="urlpad">Un pad a été créé pour cette réunion <a [href]="urlpad" target="_blank">{{urlpad}}</a>.</span><BR>
+              <BR>
+      </ng-template>
+            <ng-template pTemplate="footer">
+              <div>
+                  <p-button label="Back" (onClick)="prevPage1()" icon="pi pi-angle-left"></p-button>
+              </div>
+
+
+          </ng-template>
+        </p-card>
+    </div>
+
+</div>

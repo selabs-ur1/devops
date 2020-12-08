@@ -1,0 +1,38 @@
+
+.SmallCard_Container {
+    display: flex;
+    width: 100%;
+}
+  
+  
+.SmallCard {
+    background-color: white;
+    margin-right: 1rem; 
+    padding: 2rem;
+    border-radius: 0.5rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .SmallCard_Image {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .SmallCard_Title {
+    padding: 1rem;
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .SmallCard_Subtitle {
+    text-align: center;
+  }
+  
+  .SmallCard:last-child {
+    margin-right: 0;
+  }

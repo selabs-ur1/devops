@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+  }
+  
+  html, 
+  body {
+      height: 100%;
+  }
+  
+  body {
+    background-color: #F0F4F8;
+    color: #303030;
+    font-family: 'Montserrat', 'Open Sans', 'Roboto', sans-serif;
+  }
+  
+  .Btn-primary {
+    background-color: #4D3DF7;
+    border-radius: .25rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    border: 0 solid #dae1e7;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  }
+  
+  .Btn-primary:hover {
+    background-color: #3525E6;
+  }
+  
