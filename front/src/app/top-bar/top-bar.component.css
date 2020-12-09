@@ -1,0 +1,40 @@
+.Links {
+  display: flex;
+  font-weight: 600;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4D3DF7;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+}
+
+.Links_Right {
+  display: flex;
+}
+
+.Links_Left {
+  display: flex;
+}
+
+.Feat_Link {
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.Feat_Link:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+.Feat_Link.Unique {
+  border-radius: 5px 5px 0 0!important;
+}
+
+.Feat_Link:hover {
+  background-color: #0C008C;
+}

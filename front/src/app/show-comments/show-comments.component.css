@@ -1,0 +1,16 @@
+.Author_MealPref {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+
+.Author_Comment {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+.MealPref {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+}
+.Comment {
+  padding: 1rem;
+}
