@@ -1,0 +1,10 @@
+<div class="Comments">
+  <div class="Comment">
+  <h2>{{comments?.length}} commentaire<span *ngIf="comments?.length > 1">s</span> : </h2>
+  <ul>
+    <li *ngFor="let comment of comments" class="MealPref">
+      <span class="Author_Comment">{{ comment.auteur}}</span> : <span>{{comment.content}}</span>
+      </li>
+  </ul>
+  </div>
+</div>
