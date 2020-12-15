@@ -7,6 +7,10 @@ This repository contains the material and content of the DevOps course at the en
 
 Introduction to the course and DevOps: Nov. 23rd, 2020 (8h-10h)
 
+
+
+
+
 Office hours: 
 - 23/11 16-18 (GJ)
 - 26/11 10-12 (BC)
