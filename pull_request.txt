@@ -1,28 +1,3 @@
-# UR1/ESIR DevOps Course
-This repository contains the material and content of the DevOps course at the engineering school ESIR of the University of Rennes 1. 
-
-## Year 2020-2021
-
-### Scheduling
-
-Introduction to the course and DevOps: Nov. 23rd, 2020 (8h-10h)
-
-Office hours: 
-- 23/11 16-18 (GJ)
-- 26/11 10-12 (BC)
-- 27/11 10-12 (GJ)
-- 27/11 14-16 (BC)
-- 30/11 10-12 (GJ)
-
-Final presentations: Dec. 10th, 2020 (16h-18h)
-
-### Material
-
-The introduction to the course and DevOps can be found [here](https://people.irisa.fr/Benoit.Combemale/course/esir/esir3/). 
-We meet on the dedicated team on MS Teams. 
-
-
-
 ## Configuration Management :
 Configuration management occurs when a configuration platform is used to automate, monitor, design and manage otherwise manual configuration processes. System-wide changes take place across servers and networks, storage, applications, and other managed systems.
 Configuration management tools like Chef, Puppet, and the others help configure the software and systems on this infrastructure that has already been provisioned.
@@ -176,7 +151,6 @@ You will find [here ](https://drive.google.com/file/d/1yBFzYDzCPUUMISpf_p_w-t_0J
 
 You will find the Github link [here ](https://github.com/LeaderKam/TP_DLC/tree/master?fbclid=IwAR3ICdgru67ELRJBjV-jiyqpdfI3l3U8eI9oqH99MX48fe1JjRE6rvYXjfA).<br>
 Click [here ](https://drive.google.com/file/d/1vjk2EngyNy5hNG7E2s485NWFXEs_EMaC/view?usp=sharing)to see the [demo](https://drive.google.com/file/d/1vjk2EngyNy5hNG7E2s485NWFXEs_EMaC/view?usp=sharing).
-
 
 
 
