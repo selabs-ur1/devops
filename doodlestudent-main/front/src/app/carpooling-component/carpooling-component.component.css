@@ -1,0 +1,60 @@
+.Author_MealPref {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+
+.Author_Comment {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+.MealPref {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+}
+.Comment {
+  padding: 1rem;
+}
+
+/* Table style*/
+
+table  {
+    border-collapse: collapse;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    cursor: pointer;
+    margin: 0px auto;
+    border: 2px solid #007bff;
+}
+
+thead tr {
+    background-color: #007bff;
+    color: #fff;
+    text-align: left;
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+tbody tr, td, th {
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+
+@media screen and (max-width: 550px) {
+  body {
+    align-items: flex-start;
+  }
+  .table-style  {
+    width: 100%;
+    margin: 0px;
+    font-size: 10px;
+  }
+  th, td {
+    padding: 10px 7px;
+}
+
+}

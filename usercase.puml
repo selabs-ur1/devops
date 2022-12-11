@@ -1,0 +1,50 @@
+@startuml useCases
+Left to Right direction
+actor :User: as u
+actor :Admin: as a
+ 
+rectangle poll {
+    u --> (Créer un sondage)
+}
+ 
+rectangle pad {
+    u --> (Accéder au pad)
+}
+ 
+rectangle kahoot {
+    (Lier un kahoot) <-- a
+    u --> (Accéder à un kahoot)
+}
+ 
+rectangle account {
+    u --> (Créer un compte)
+    u --> (Se connecter)
+    (Récupérer une équipe) <-- a
+}
+ 
+rectangle carpooling {
+    u --> (Créer un aller)
+    u --> (Créer un retour)
+    u --> (Candidater à un trajet)
+    u --> (Choisir passagers)
+}
+ 
+rectangle comment {
+    u --> (Écrire un commentaire)
+    u --> (Lire un commentaire)
+}
+ 
+rectangle meal {
+    (Proposer des repas) <-- a
+    u --> (Choisir un repas)
+}
+ 
+rectangle visio {
+    (Lier une visioconférence) <-- a
+    u --> (Accéder à une visioconférence)
+}
+ 
+rectangle chat {
+    u --> (Accéder au chat)
+}
+@enduml

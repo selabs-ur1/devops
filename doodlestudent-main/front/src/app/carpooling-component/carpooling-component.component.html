@@ -1,0 +1,27 @@
+<div class="carpoolingPropositions">
+    <table>
+        <thead>
+            <tr>
+                <th>Driver</th>
+                <th>Departure locatisation</th>
+                <th>Departure hour</th>
+                <th>Return hour</th>
+                <th>Places</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let proposition of carpoolingPropositions">
+                <td>{{proposition.driver}}</td>
+                <td>{{proposition.departure_localisation}}</td>
+                <td>{{proposition.departure_time}}</td>
+                <td>{{proposition.arriving_time}}</td>
+                <td>{{proposition.places_restantes}}</td>
+                <td>
+                    <p-button [disabled]="joinedCarpooling" label="Join" (click)='joinCarpooling(proposition.id)'></p-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

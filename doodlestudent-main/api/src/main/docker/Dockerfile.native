@@ -1,0 +1,44 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
+#
+# Before building the container image run:
+#
+# mvn package -Pnative -Dquarkus.native.container-build=true
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.native -t barais/doodleback-with-quarkus .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 barais/doodleback-with-quarkus
+#
+###
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.1
+WORKDIR /work/
+RUN chown 1001 /work \
+    && chmod "g+rwX" /work \
+    && chown 1001:root /work
+COPY --chown=1001:root target/*-runner /work/application
+
+EXPOSE 8080
+USER 1001
+
+# ENV quarkus_datasource_jdbc_url "jdbc:mysql://db:3306/tlc?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true&serverTimezone=Europe/Paris"
+# ENV quarkus_datasource_username tlc
+# ENV quarkus_datasource_password tlc
+# ENV quarkus_hibernate_orm_database_generation update
+# ENV quarkus_mailer_from olivier.barais@gmail.com
+# ENV quarkus_mailer_host localhost
+# ENV quarkus_mailer_port 2525
+# ENV quarkus_mailer_ssl false
+# ENV quarkus_mailer_username ""
+# ENV quarkus_mailer_password ""
+# ENV quarkus_mailer_mock true
+# ENV doodle_usepad false
+# ENV doodle_padUrl http://etherpad:9001/
+# ENV doodle_padApiKey "changeit"
+# ENV doodle_organizermail "olivier.barais@gmail.com"
+
+
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
