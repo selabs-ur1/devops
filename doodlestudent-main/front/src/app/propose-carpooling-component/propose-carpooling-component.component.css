@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+}
+
+.proposeCarpooling {
+  width: fit-content;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 0 auto;
+  border: 2px solid #007bff;
+}
+
+h4 {
+  text-align: center;
+}

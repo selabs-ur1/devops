@@ -1,0 +1,57 @@
+<div class="Container">
+  <img src="assets/flat_logo.png" alt="Logo Simba" height="50px" [ngStyle]="{ 'marginBottom': '1rem' }"/>
+  <div>
+    <a  routerLink="/" style="margin-left: 1em;">Accueil</a>
+  </div>
+  <div>
+    <p [ngStyle]="{ 'marginLeft': '1rem', 'marginTop': '1rem'}">Prénom : {{account.firstname}}</p>
+    <p [ngStyle]="{ 'marginLeft': '1rem' }">Nom : {{account.lastname}}</p>
+    <p [ngStyle]="{ 'marginLeft': '1rem' }">Mail : {{account.mail}}</p>
+    <p [ngStyle]="{ 'marginLeft': '1rem' }">Lien agenda Ics :</p>
+    <input [ngStyle]="{ 'marginLeft': '1rem' }" type="text" required pInputText [(ngModel)]="ics" value="{{account.agendaIcs}}">
+    <p-button label="Modifier" (onClick)="changeIcs()" style="padding-bottom: 2em;"> </p-button>
+  </div>
+  <h1 [ngStyle]="{ 'marginLeft': '1rem' }">Poll admin</h1>
+  <table [ngStyle]="{ 'marginLeft': '1rem', 'marginBottom': '1rem' }">
+    <thead>
+      <tr>
+          <th>Date de création</th>
+          <th>Lien admin</th>
+          <th>Lien de participation</th>
+          <th>Sallon de discussion</th>
+          <th>Pad</th>
+      </tr>
+  </thead>
+
+    <tbody>
+      <tr *ngFor="let poll of pollsAdmin">
+          <td>{{poll.createdAt | date}}</td>
+          <td><a href="http://localhost:4200/admin/{{poll.slugAdmin}}" target="_blank">http://localhost:4200/admin/{{poll.slugAdmin}}</a></td>
+          <td><a href="http://localhost:4200/answer/{{poll.slug}}" target="_blank">http://localhost:4200/answer/{{poll.slug}}</a></td>
+          <td><a href="{{poll.tlkURL}}" target="_blank">{{poll.tlkURL}}</a></td>
+          <td><a href="{{poll.padURL}}" target="_blank">{{poll.padURL}}</a></td>
+      </tr>
+  </tbody>
+  </table>
+  <h1 [ngStyle]="{ 'marginLeft': '1rem' }">Poll membre</h1>
+  <table [ngStyle]="{ 'marginLeft': '1rem' }">
+    <thead>
+      <tr>
+          <th>Date de création</th>
+          <th>Lien de participation</th>
+          <th>Sallon de discussion</th>
+          <th>Pad</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let poll of pollsMember">
+          <td>{{poll.createdAt | date}}</td>
+          <td><a href="http://localhost:4200/answer/{{poll.slug}}" target="_blank">http://localhost:4200/answer/{{poll.slug}}</a></td>
+          <td><a href="{{poll.tlkURL}}" target="_blank">{{poll.tlkURL}}</a></td>
+          <td><a href="{{poll.padURL}}" target="_blank">{{poll.padURL}}</a></td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

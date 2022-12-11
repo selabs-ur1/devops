@@ -1,0 +1,51 @@
+image : node:12.22.9
+
+cache:
+  untracked: true
+  key: npm
+  policy: pull-push
+  paths:
+    - .npm/
+
+stages:
+    - build
+    - test
+
+#-------------------------- Meal
+setup_meal:
+    stage: build
+    script:
+        - cd doodlestudent-main/api_meal/
+        - npm install --cache .npm --prefer-offline
+
+testing_meal:
+    stage: test
+    script:
+        - cd doodlestudent-main/api_meal/
+        - npm run test:e2e
+
+#-------------------------- Comment
+setup_comment:
+    stage: build
+    script:
+        - cd doodlestudent-main/api_comment/
+        - npm install --cache .npm --prefer-offline
+
+testing_comment:
+    stage: test
+    script:
+        - cd doodlestudent-main/api_comment/
+        - npm run test:e2e
+
+#-------------------------- Chat
+setup_chat:
+    stage: build
+    script:
+        - cd doodlestudent-main/api_chat/
+        - npm install --cache .npm --prefer-offline
+
+testing_chat:
+    stage: test
+    script:
+        - cd doodlestudent-main/api_chat/
+        - npm run test:e2e

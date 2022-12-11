@@ -1,0 +1,50 @@
+.Container {
+    max-width: 800px;
+    margin: 2rem auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .Home_Container {
+    width: 1024px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .Home_Wrapper {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  .Home_Logo {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Home_Button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .Home_CreateLink {
+    padding: 1rem;
+    width: 100%;
+    background-color: #43dbac;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  }

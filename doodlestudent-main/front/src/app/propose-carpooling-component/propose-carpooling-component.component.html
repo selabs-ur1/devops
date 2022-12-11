@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="proposeCarpooling">
+    <h4>Propose Carpooling</h4>
+    <hr>
+
+    <label for="driver">Driver name</label><br>
+    <input #nom="ngModel" id="driver" type="text" required pInputText [(ngModel)]="carpoolingInfos.driver">
+
+    <br><br>
+
+    <label for="departure_localisation">Departure localisation</label><br>
+    <input #nom="ngModel" id="departure_localisation" type="text" required pInputText [(ngModel)]="carpoolingInfos.departure_localisation">
+
+    <br><br>
+    <label for="departure_time">Departure time</label><br>
+    <input #nom="ngModel" id="departure_time" type="text" required pInputText [(ngModel)]="carpoolingInfos.departure_time">
+
+    <br><br>
+    <label for="arriving_time">Arriving time</label><br>
+    <input #nom="ngModel" id="arriving_time" type="text" required pInputText [(ngModel)]="carpoolingInfos.arriving_time">
+
+    <br><br>
+      <label for="places">Number of places</label><br>
+      <input #nom="ngModel" id="places" type="text" required pInputText [(ngModel)]="carpoolingInfos.places">
+
+    <br><br>
+    <p-button label="Submit" (click)='proposeCarpooling()'></p-button>
+
+  </div>
+</div>

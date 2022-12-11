@@ -1,0 +1,34 @@
+<div class="Container">
+    <img src="assets/flat_logo.png" alt="Logo Simba" height="50px" [ngStyle]="{ 'marginBottom': '1rem' }"/>
+    <div>
+      <a  routerLink="" style="margin-left: 1em;">Accueil</a>
+    </div>
+      <div class="login">
+        <h2 class="login-header">Inscription</h2>
+        <form class="login-container">
+          <p>
+            <input type="text" placeholder="Firstname" id="firstname" name="firstname" required pInputText [(ngModel)]="firstname">
+          </p>
+
+          <p>
+            <input type="text" placeholder="Lastname" id="lastname" name="lastname" required pInputText [(ngModel)]="lastname">
+          </p>
+
+          <p>
+            <input type="email" placeholder="Email" id="mail" name="mail" required pInputText [(ngModel)]="mail">
+          </p>
+    
+          <p>
+            <input type="password" placeholder="Password" id="password" name="password" required pInputText [(ngModel)]="password">
+          </p>
+          <div *ngIf="!firstname || !lastname || !mail || !password">
+            <p-button label="S'inscrire" (onClick)="registration()" style="padding-left:9em;"> </p-button>
+          </div>
+          <div *ngIf="firstname && lastname && mail && password">
+            <a href="/create">
+              <p-button label="S'inscrire" (onClick)="registration()" style="padding-left:9em;"> </p-button>
+            </a>
+          </div>
+        </form>
+      </div>
+</div>
