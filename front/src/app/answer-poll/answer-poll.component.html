@@ -1,0 +1,174 @@
+<div class="Container">
+  <img src="assets/flat_logo.png" alt="Logo Simba" height="50px" [ngStyle]="{ 'marginBottom': '1rem' }" />
+  <app-top-bar [slug]="poll?.slug" [padURL]="poll?.padURL" [talkToURL]="poll?.tlkURL" ></app-top-bar>
+
+
+  <p-card>
+    <p-toast></p-toast>
+    <ng-template pTemplate="title">
+      <h1>{{poll?.title}}</h1>
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+      <div class="Dates"><span>Créé il y a {{poll?.createdAt | dateago}}</span></div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="Poll_Infos">
+        <p class="Poll_Location"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-map-pin">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>{{poll?.location}}</p>
+        <div *ngIf="poll?.has_meal" class="Poll_Has_Meal"><svg class="feather" aria-hidden="true" width="20" height="20"
+            focusable="false" data-prefix="fas" data-icon="utensils" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 416 512">
+            <path fill="currentColor"
+              d="M207.9 15.2c.8 4.7 16.1 94.5 16.1 128.8 0 52.3-27.8 89.6-68.9 104.6L168 486.7c.7 13.7-10.2 25.3-24 25.3H80c-13.7 0-24.7-11.5-24-25.3l12.9-238.1C27.7 233.6 0 196.2 0 144 0 109.6 15.3 19.9 16.1 15.2 19.3-5.1 61.4-5.4 64 16.3v141.2c1.3 3.4 15.1 3.2 16 0 1.4-25.3 7.9-139.2 8-141.8 3.3-20.8 44.7-20.8 47.9 0 .2 2.7 6.6 116.5 8 141.8.9 3.2 14.8 3.4 16 0V16.3c2.6-21.6 44.8-21.4 48-1.1zm119.2 285.7l-15 185.1c-1.2 14 9.9 26 23.9 26h56c13.3 0 24-10.7 24-24V24c0-13.2-10.7-24-24-24-82.5 0-221.4 178.5-64.9 300.9z">
+            </path>
+          </svg>
+          Cet évènement contient un repas
+        </div>
+      </div>
+
+
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="nom">Nom prénom participant</label>
+          <input #nom="ngModel" id="nom" type="text" required pInputText [(ngModel)]="personalInformation.nom"
+            [ngClass]="{'p-invalid': (nom.invalid && submitted) || (nom.dirty && nom.invalid)}">
+          <small *ngIf="(nom.invalid && submitted) || (nom.dirty && nom.invalid)" class="p-error">Le nom est
+            requis.</small>
+        </div>
+        <div class="p-field">
+          <label for="mail">Email participant</label>
+          <span class="p-input-icon-right">
+            <i *ngIf="loademail" class="pi pi-spin pi-spinner" ></i>
+
+          <input #mail="ngModel" id="mail" type="email" required pInputText (change)="getUserFromMail()" [(ngModel)]="personalInformation.mail"
+            [ngClass]="{'p-invalid': (mail.invalid && submitted) || (mail.dirty && mail.invalid)}">
+          </span>
+          <small class="p-error" *ngIf="(mail.invalid && submitted )|| (mail.dirty && mail.invalid)">Le
+            mail est requis.</small>
+
+        </div>
+        <div class="p-field">
+          <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 1rem;font-weight: normal;">Avez vous un agenda avec un flux ics accessible ?</p>
+          <p-inputSwitch [(ngModel)]="hasics"></p-inputSwitch>
+        </div>
+        <div *ngIf="hasics" class="p-field">
+          <label for="ics">URL ICS du participant</label>
+          <span class="p-input-icon-right">
+            <i *ngIf="loadics" class="pi pi-spin pi-spinner" ></i>
+            <input #mail="ngModel" id="ics" type="text"  pInputText (change)="getICS()" [(ngModel)]="personalInformation.ics">
+          </span>
+        </div>
+        <div *ngIf="poll?.has_meal" class="p-field">
+          <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; font-size: 1rem;font-weight: normal;">Avez vous des préférences alimentaires ?</p>
+          <p-inputSwitch [(ngModel)]="personalInformation.pref"></p-inputSwitch>
+        </div>
+        <div *ngIf="personalInformation?.pref" class="p-field">
+          <label for="desc">Description préférences alimentaires</label>
+          <textarea #desc="ngModel" id="desc" required pInputTextarea [(ngModel)]="personalInformation.desc"
+            [ngClass]="{'p-invalid': (desc.invalid && submitted) || (desc.dirty && desc.invalid)}"></textarea>
+          <small class="p-error" *ngIf="(desc.invalid && submitted) || (desc.dirty && desc.invalid)">La description est
+            requise.</small>
+        </div>
+
+        <div>
+          <p-selectButton  [options]="calendarortableoption" [(ngModel)]="calendarortable">
+            <ng-template let-item>
+              <i [class]="item.icon">Vue {{item.text}}</i>
+            </ng-template>
+          </p-selectButton>
+        </div>
+
+        <div *ngIf="calendarortable ==='calendar'">
+          <full-calendar #calendar [options]="options"></full-calendar>
+        </div>
+
+        <div *ngIf="calendarortable !='calendar'">
+                <div class="container-fluid">
+            <div class="table-responsive-sm card">
+            <table class="table">
+            <thead>
+              <tr>
+                <th rowspan="2"></th>
+                <th *ngFor="let ev of events" class="text-light" style="text-align: center;background-color: #545B62">{{ev.start | date:'EEEE d LLLL': 'CEST':'fr'}}</th>
+              </tr>
+              <tr>
+                <th *ngFor="let ev of events" style="text-align: center">{{ev.start | date:'H:mm'}} <BR>-<BR> {{ev.end | date:'H:mm'}}</th>
+              </tr>
+              <tr>
+                <th><span>{{uniqueUsers.length + 1}} participant</span><span *ngIf="uniqueUsers.length > 0">s</span></th>
+                <th *ngFor="let pc of poll?.pollChoices" style="text-align: center">{{pc.users.length}}</th>
+              </tr>
+
+          </thead>
+            <tbody>
+              <tr *ngFor="let u of userChoices | keyvalue">
+                <td><input type="text" [disabled]='true' pInputText [ngModel]="uniqueUsers | usernamePipe:u.key"></td>
+                <td *ngFor="let ev of events"  style="text-align: center"><p-checkbox  [disabled]='true' [binary]="true" [ngModel]="u.value | selecteddate4userPipe:u.key:ev" ></p-checkbox></td>
+              </tr>
+
+              <tr>
+                <td><input #nomvotant="" id="nomvotant" type="text" required pInputText [(ngModel)]="personalInformation.nom"></td>
+                <td *ngFor="let ev of events" style="text-align: center"><p-checkbox  [binary]="true" (onChange)="updateEvent($event,ev )" [ngModel]="ev.extendedProps.selected" ></p-checkbox></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+        </div>
+        <div>
+          <p-button [disabled]="voeuxsoumis" label="Soumettre voeux" (onClick)="createReponse()"
+            icon="pi pi-angle-left"></p-button>
+        </div>
+
+      </div>
+
+
+
+
+
+
+    </ng-template>
+    <ng-template pTemplate="footer">
+    <app-show-comments  *ngIf="poll" [comments]="comments"></app-show-comments>
+
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="comment">Auteur du commentaire associé à ce sondage</label>
+          <input #comment="ngModel" id="comment" type="text" required pInputText [(ngModel)]="comment1"
+            [ngClass]="{'p-invalid': (comment.invalid && csubmitted) || (comment.dirty && comment.invalid)}">
+          <small *ngIf="(comment.invalid && csubmitted) || (comment.dirty && comment.invalid)" class="p-error">L'auteur
+            du commentaire est requis.</small>
+        </div>
+
+        <div class="p-field">
+          <label for="commentdesc">Commentaire</label>
+          <textarea #commentdesc="ngModel" id="commentdesc" required pInputTextarea [(ngModel)]="commentdesc1"
+            [ngClass]="{'p-invalid': (commentdesc.invalid && csubmitted) || (commentdesc.dirty && commentdesc.invalid)}"></textarea>
+          <small class="p-error"
+            *ngIf="(commentdesc.invalid && csubmitted) || (commentdesc.dirty && commentdesc.invalid)">Le commentaire est
+            requis.</small>
+        </div>
+        <div>
+          <p-button [disabled]="commentsoumis" label="Ajouter commentaire" (onClick)="createComment()"
+            icon="pi pi-angle-left"></p-button>
+        </div>
+
+
+      </div>
+
+
+    </ng-template>
+  </p-card>
+</div>
+
+
+
+
+<!--<p-button (onClick)="testEvent()">test</p-button>-->
+<!-- Modal -->
+
+

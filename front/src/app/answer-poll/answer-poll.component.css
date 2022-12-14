@@ -1,0 +1,488 @@
+:root {
+  --header-height : 180px;
+  --participant-width : 230px;
+  --cell-width : 65px;
+  --cell-height: 40px;
+  --new-participant-height : 65px;
+  --cell-padding : 1rem;
+
+  --color-new-participant : #E6E6FF;
+  --color-vote-yes : #E6E6FF;
+  --color-vote-no :rgb(254,246,246) ;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.Poll_Has_Meal {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+
+.Poll_Vote_Wrapper{
+  display: flex;
+  justify-content:center;
+}
+
+.Poll_Vote_Content{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  /*border : 2px solid black; */
+  max-width: 100%;
+  max-height: 390px;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+
+.Cell_Poll_Header{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.Cell_Option .Cell_Poll_Header, .Cell_Option_Votes{
+  border-left: 1px solid black;
+}
+
+
+.Cell_Options{
+  display: flex;
+  flex-direction: row;
+}
+.Cell_Option{
+  display: flex;
+  flex-direction: column;
+}
+
+/*Tailles de cellules*/
+.Cell_Participants_Header,.Cell_Participant_Count,
+.Cell_New_Participant,.Cell_Participant{
+  width: var(--participant-width);
+}
+.Cell_Option_Name,.Cell_Option_Count,
+.Cell_Option_New_Participant_Vote,.Cell_Option_Vote_Yes,
+.Cell_Option_Vote_No{
+  width: var(--cell-width);
+}
+/*.Cell_New_Participant,.Cell_Option_New_Participant_Vote{
+  height: var(--new-participant-height);
+}*/
+
+.Cell_Option_New_Participant_Vote {
+  height: 50px;
+}
+
+.Checkbox_Btn.LastCheck {
+  border-radius: 0 0 5px 0;
+}
+
+
+.Cell_Participants_Header,.Cell_Option_Name, .Cell_Header_Name{
+  height: var(--header-height);
+}
+/*.Cell_Participant_Count,.Cell_Option_Count,
+.Cell_Option_Vote_Yes,.Cell_Option_Vote_No,.Cell_Participant{
+  height: var(--cell-height);
+}*/
+
+.Cell_Participant_Count {
+  padding: 1rem;
+}
+
+
+/* Disposition dans les cellules */
+.Cell_Participants_Header,.Cell_Participant_Count,
+.Cell_Option_Count,
+.Cell_Option_Vote_Yes,.Cell_Option_Vote_No{
+  padding: var(--cell-padding);
+  text-align: center;
+  justify-content: center;
+  /*border: 1px solid black;*/
+}
+
+.Poll_Vote_Content {
+  border: 1px solid #E6E6FF;
+}
+
+/*.Cell_Participant,.Cell_New_Participant{
+  padding: var(--cell-padding);
+  padding-left: 20%;
+  border: 1px solid black;
+  text-align: left;
+}*/
+
+.Cell_Option_Name, .Cell_Participants_Header {
+  border-bottom: 1px solid black;
+}
+
+
+.Cell_Participant, .Cell_Vote {
+  height: 50px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*Couleurs*/
+.Cell_Option_New_Participant_Vote{
+  background-color: var(--color-new-participant);
+}
+.Cell_Option_Vote_Yes{
+  background-color: var(--color-vote-yes)
+}
+.Cell_Option_Vote_No{
+  background-color: var(--color-vote-no)
+}
+/* Fixe la premiere colonne et parametrage du scroll*/
+
+.Cell_Options{
+  overflow-x: scroll;
+}
+
+
+.Cell_New_Participant_Input {
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  padding: 10px;
+}
+
+.Cell_New_Participant_Input.error {
+  border: 2px solid #EF4E4E;
+}
+
+.Poll_View_Btn {
+  display: flex;
+  flex: 1 1;
+  border: 1px solid #1D0EBE;
+  display: flex;
+  color: #4D3DF7;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+}
+
+.Poll_View_Btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.Poll_View_Btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.Poll_View_Btn.active {
+  background-color: #4D3DF7;
+  color: white;
+}
+
+.Poll_Btns {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.Meal_Preferences_Toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.Poll_Location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.feather {
+  margin-right: 1rem;
+}
+
+.Cell_Header {
+  width: var(--participant-width);
+}
+
+.Poll_Has_Meal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Poll_Description_Title {
+  font-size: 0.8rem;
+  color: #243B53;
+}
+
+.Poll_Infos {
+  display: flex;
+}
+
+.Poll_Info {
+  flex: 1;
+}
+
+.green {
+  background-color:  #199473;
+}
+
+.green:hover {
+  background-color:  #147D64;
+}
+
+.Poll_Vote_Action {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+
+.Cell_Poll_Header.Cell_Option_Name {
+  width: 100%!important;
+}
+
+.selected {
+  background-color: #65D6AD;
+  color: #014D40;
+}
+
+.Poll_Subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.Dates {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.Pad_Url {
+  display: flex;
+  align-items: center;
+}
+
+.Edit_Link {
+  margin-left: 1rem;
+  font-weight: 500;
+  color: #4d3cf7;
+  text-decoration: none;
+}
+
+.Edit_Link:hover {
+  color: #1D0EBE;
+}
+
+.Link {
+  text-decoration: none;
+  color: #4d3cf7;
+}
+
+.Link:hover {
+  text-decoration: underline;
+}
+
+.Cell_Day {
+  background-color: #4d3cf7;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.Poll_Start_Date {
+  padding: 5px;
+}
+
+.Poll_Date {
+  text-align: center;
+  padding: 8px;
+  color: #4d3cf7;
+}
+
+.Checkbox_Btn {
+  width: 65px;
+  height: 50px;
+  border: none;
+  outline: none;
+  text-align: center;
+  transition: background-color 0.3s linear;
+  border: 1px solid #4d3cf7;
+}
+
+.Checkbox_Btn.Active {
+  background-color: #4d3cf7;
+  color: white;
+}
+
+.Cell_New_Participant {
+  height: 50px;
+}
+
+
+.Links {
+  display: flex;
+  font-weight: 600;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #4D3DF7;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+
+}
+
+.Links_Right {
+  display: flex;
+}
+
+.Links_Left {
+  display: flex;
+}
+
+.Feat_Link {
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.Feat_Link:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+.Feat_Link.Unique {
+  border-radius: 5px 5px 0 0!important;
+}
+
+.Feat_Link:hover {
+  background-color: #0C008C;
+}
+
+.MealPref {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.Author_MealPref {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+
+.Author_Comment {
+  font-weight: bold;
+  color: #4d3cf7;
+}
+
+
+.orange {
+  background-color:  #F7D070;
+}
+
+.orange:hover {
+  background-color:  #E9B949;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.Export_Modal {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  width: 500px; /* Could be more or less, depending on screen size */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+}
+
+.Export {
+  padding: 20px;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #4d3cf7;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s linear;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Export:hover {
+  background-color: #4d3cf7;
+  color: white;
+}
+
+.Export:first-child {
+  border-right: 4px solid #4d3cf7;
+  border-radius: 3px 0 0 3px;
+}
+
+.Export:last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+.Export_Icon {
+  margin: 1rem;
+}
+
+.Poll_Informations {
+  background-color: white;
+  width: 100%;
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  border-radius: 5px;
+}
+
+.Meal_Preferences {
+  padding: 1rem;
+  border-bottom: 2px solid #F0F4F8;
+}
+
+.Disabled {
+  background-color: #cccccc;
+}
+
+.Disabled:hover {
+  color: #4d3cf7;
+  background-color: #cccccc;
+  cursor: default;
+}
+
+.Comment {
+  padding: 1rem;
+}
