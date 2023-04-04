@@ -1,3 +1,4 @@
+# KONE MORY, KOIZAN APPIA, COULIBALY MAWA, MONTCHO GLORIA, LAMIA GHARBI  
 # Intégration continue, Analyse statique et Automatisation des tests
 
 Pour ce tutoriel, nous utiliserons le front d'un projet réalisé dans le cadre du cours d'Architecture Logiciel fait en Angular.
