@@ -1,27 +1,46 @@
-Problematique abordée: L’objectif de ce travail était de se familiariser avec les outils d'intégration continue dans un contexte devops en donnant les différentes étapes du processus d’intégration continue, les différents outils utilisés, et en analysant également les résultats obtenus.L’intégration continue une pratique clé du processus DevOps qui consiste à intégrer fréquemment et automatiquement des modifications afin de détecter rapidement les erreurs et de réduire le temps nécessaire pour mettre à jour le code. Son processus implique l'utilisation d'outils d'automatisation de tests  qui permettent de compiler et de tester automatiquement le code à chaque modification, puis de signaler les erreurs aux développeurs. Les tests peuvent inclure des tests unitaires, des tests de performance, des tests de sécurité et d'autres types de tests qui vérifient que le code fonctionne correctement et est conforme aux exigences.
+# Intégration continue, Analyse statique et Automatisation des tests
+
+Pour ce tutoriel, nous utiliserons le front d'un projet réalisé dans le cadre du cours d'Architecture Logiciel fait en Angular.
+
+## Problematique abordée:
+L’objectif de ce travail était de se familiariser avec les outils d'intégration continue dans un contexte devops en donnant les différentes étapes du processus d’intégration continue, les différents outils utilisés, et en analysant également les résultats obtenus.L’intégration continue une pratique clé du processus DevOps qui consiste à intégrer fréquemment et automatiquement des modifications afin de détecter rapidement les erreurs et de réduire le temps nécessaire pour mettre à jour le code. Son processus implique l'utilisation d'outils d'automatisation de tests  qui permettent de compiler et de tester automatiquement le code à chaque modification, puis de signaler les erreurs aux développeurs. Les tests peuvent inclure des tests unitaires, des tests de performance, des tests de sécurité et d'autres types de tests qui vérifient que le code fonctionne correctement et est conforme aux exigences.
+
+## Objectif:
+
+Ces pratiques nous permettront d'améliorer la qualité de notre code, de détecter les erreurs plus rapidement et de déployer des versions de votre application plus rapidement et en toute confiance. Un des principaux but du DevOps
 
 
-Presentation d'outils
-Junit: JUnit est un framework open-source pour les tests unitaires en Java. Il fournit des annotations et des méthodes pour faciliter l'écriture de tests unitaires en Java. Les tests unitaires sont des tests qui vérifient le comportement d'une unité de code (par exemple, une méthode ou une classe) de manière isolée, afin de s'assurer qu'elle fonctionne comme prévu.JUnit définit deux types de fichiers de tests. Les TestCase (cas de test) sont des classes contenant un certain nombre de méthodes de tests. Un TestCase sert généralement à tester le bon fonctionnement d'une classe.Une TestSuite permet d'exécuter un certain nombre de TestCase déjà définis.
-Maven: Maven est un outil de gestion et d'automatisation de production des projets logiciels Java en général et Java EE en particulier. Il est utilisé pour automatiser l'intégration continue lors d'un développement de logiciel, il fournit un moyen de décrire les dépendances de votre projet, ainsi que les étapes de construction et de déploiement 
+## Presentation d'outils
+- Pour l'intégration continue
+Il existe plusieurs plateformes d'intégration continue, telles que Travis CI, CircleCI, Jenkins, GitLab CI/CD, qui offrent des plans gratuits pour les projets open source.
+- Pour l'analyse statique du code
+On configure l'analyse statique du code en ajoutant des outils d'analyse statique tels que SonarQube, CodeClimate, Codacy, etc. Ces outils peuvent détecter des problèmes de qualité de code tels que des vulnérabilités, des erreurs de syntaxe et des erreurs de style.
+- Pour l'automatisation des tests
+On ajoute des tests automatisés pour les différentes parties de l'application en utilisant des frameworks de test tels que JUnit, PyTest, Mocha, etc. Ces tests automatisés doivent être ajoutés dans le fichier de configuration de l'étape de test sur la plateforme d'intégration continue.
 
-Utlisation des outils:
-Nous avons monté notre projet avec le gestionnaire de dépendances Maven.
-Nous avons crée des classes de test dans notre projet en important la bibliothèque JUnit 4.
-Dans nos classes de test, nous avons ecrit des méthodes de test pour chaque fonctionnalité que nous voulons tester.
-Au niveau de notre fichier pom.xml, nous avons pu generer la dependance Junit4 et les plugings neccesaires pour faire des rapports de tests detaillés
+## Utilisation des outils:
+Nous nous sommes tournés vers l'utilisation de la version gratuite d'azure devops qui est une plateforme de microsoft qui nous regroupe tout ce dont on a besoin pour lancer l'intégration continue (à travers un fichier azure-pipelines.yml) avec une interface assez intuitive et interactive facilitant la , concernant l'analyse du code, nous la faisons via sonarqube qu'on paramètre à l'aide d'un fichier spécifié sonar-project.properties, nous faisons nos tests avec Karma, Karma est souvent utilisé pour tester des applications AngularJS, mais il peut être utilisé pour tester tout type d'application JavaScript. Il est également intégré dans de nombreux outils de développement tels que Visual Studio Code, WebStorm et IntelliJ IDEA.
 
-Les limites des outils qu'on a utlisés:
-Jenkins :
-Configuration complexe : La configuration de Jenkins peut être complexe et difficile pour les débutants, ce qui peut nécessiter un certain temps pour apprendre et maîtriser.
-Scalabilité : Bien que Jenkins soit très extensible, il peut ne pas être idéal pour les grandes équipes et les projets complexes qui nécessitent une grande capacité de traitement.
-Dépendance aux plugins : Jenkins repose largement sur les plugins pour étendre ses fonctionnalités, ce qui peut entraîner des problèmes de compatibilité et de sécurité.
-Maven :
-Performance : Bien que Maven soit capable de gérer des projets de grande taille, il peut parfois être lent en raison de son approche basée sur les plugins et la configuration XML.
-Dépendances : Maven gère les dépendances des projets en téléchargeant les bibliothèques requises à partir des dépôts centraux, ce qui peut poser des problèmes si les bibliothèques sont absentes ou obsolètes.
-Intégration avec d'autres outils : Bien que Maven dispose d'une intégration solide avec de nombreux outils de développement, il peut être difficile d'intégrer certains outils personnalisés ou tiers.
-JUnit :
-Tests complexes : JUnit peut être limité dans la prise en charge de tests unitaires complexes ou sophistiqués.
-Couverture de code : JUnit ne fournit pas de fonctionnalités de couverture de code intégrées, vous devez utiliser un plugin tiers ou une autre solution pour obtenir une couverture de code détaillée.
-Test d'intégration : JUnit est conçu pour les tests unitaires et peut ne pas être idéal pour les tests d'intégration, qui peuvent nécessiter des outils supplémentaires pour être gérés.
+## Etapes de mise en place :
 
+- Créer un projet Azure DevOps 
+On se connecte à notre compte Azure DevOps et on crée un nouveau projet pour notre application.
+
+- Créer un pipeline d'intégration continue 
+On Crée un pipeline d'intégration continue en utilisant Azure Pipelines. on configure le pipeline pour déclencher automatiquement lorsqu'un nouveau commit est poussé vers notre référentiel Git. Il est possible de configurer les étapes du pipeline pour construire, tester et déployer notre application, nous n'avons pas fait de déploiement par contre, cela pourrait  déboucher sur un approfondissement sur le sujet de notre part. La configuration de la pipeline se fait à travers le fichier azure-pipeline.yml
+
+- Configurer l'analyse statique du code :
+On ajoute des tâches dans notre pipeline pour effectuer une analyse statique du code en utilisant SonarQube. les configurations des règles d'analyse pour détecter les vulnérabilités, les erreurs de codage et les pratiques de codage non conformes sont dans notre fichier run.sh, il est possible de stopper le job lancé en cas de taux de coverage trop petit, dans ce genre de cas, il est demandé au developpeur de mieux suivre les règles de codage dans son code avant un éventuel déploiement
+
+- Configurer l'automatisation des tests :
+On ajoute des tâches dans notre pipeline pour exécuter des tests unitaires, des tests d'intégration et des tests de performance en utilisant Karma. On configure les tests pour s'exécuter automatiquement chaque fois qu'un nouveau commit est poussé vers votre référentiel Git.
+
+- Configurer les notifications :
+On configure des notifications pour être averti en cas d'échec du pipeline, de violation des règles d'analyse statique ou d'échec des tests automatisés. Les notifications peuvent être envoyées par e-mail ou Microsoft Teams selon la volonté de l'utilisateur.
+
+## limites à notre solution:
+
+- Dépendance à Microsoft : 
+Azure DevOps est une solution cloud propriétaire de Microsoft. Les entreprises doivent donc s'assurer qu'elles sont à l'aise avec la dépendance à l'égard de Microsoft pour leur gestion de projets de développement logiciel.
+- Besoin d'une connexion internet : 
+Azure DevOps est une solution basée sur le cloud, ce qui signifie qu'une connexion Internet est nécessaire pour y accéder. Les entreprises doivent s'assurer que leur infrastructure informatique est capable de prendre en charge une telle solution basée sur le cloud.
