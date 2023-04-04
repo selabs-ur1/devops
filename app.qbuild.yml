@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    # Application Container
+  devops_front:
+    build: ./build
+    volumes:
+      - ./:/var/workspace
+    networks:
+      - innovation_default
+    env_file:
+      - ./.env
+
+networks:
+  devops:
+    external:
+      name: devops

@@ -1,0 +1,23 @@
+FROM node:18.13.0
+
+# Install chromium for tests
+RUN curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get update && apt-get install -y gettext-base python3 python3-pip bc ./google-chrome-stable_current_amd64.deb \
+    && rm google-chrome-stable_current_amd64.deb
+
+# Install anybadge
+RUN pip3 install anybadge
+
+# Clean up
+RUN apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/workspace
+
+# Copy run script
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+# Launch npm start
+ENTRYPOINT ["/run.sh"]

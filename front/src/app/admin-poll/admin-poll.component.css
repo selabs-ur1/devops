@@ -1,0 +1,37 @@
+.Poll_Informations {
+  background-color: white;
+  width: 100%;
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  border-radius: 5px;
+}
+
+.Meal_Preferences {
+  padding: 1rem;
+  border-bottom: 2px solid #F0F4F8;
+}
+
+.Poll_Has_Meal {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.Poll_Has_Meal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Poll_Description_Title {
+  font-size: 0.8rem;
+  color: #243B53;
+}
+
+.Poll_Infos {
+  display: flex;
+}
+
+.Poll_Info {
+  flex: 1;
+}

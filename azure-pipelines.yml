@@ -1,0 +1,42 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+trigger:
+  tags:
+    include:
+    - '*'
+  branches:
+    include:
+    - '*'
+resources:
+  repositories:
+    - repository: devops
+      type: git
+      name: devops
+pool: devops-pool
+variables:
+  - name: project_group
+    value: 'devops'
+  - name: project_name
+    value: 'devops'
+  - name: imageRepository
+    value: devops
+  - name: dockerfilePath
+    value: $(Build.SourcesDirectory)/Dockerfile
+  - name: deploymentName
+    value: 'devops'
+  - name: deploymentIntegName
+    value: 'devops_front'
+  - name : kubernetesNamespace
+    value : 'devops-integ'
+  - name : kubernetesIntegNamespace
+    value : 'devops-integ'
+  - name : kubernetesSecret
+    value : 'devops-config'
+  - name : kubernetesIntegSecret
+    value : 'devops-integ-config'
+ 
+  parameters:
+    DEPLOY_INTEG: false
+    DEPLOY_PROD: false
+    SCAN_SQ: true
